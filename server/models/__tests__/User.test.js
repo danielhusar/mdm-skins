@@ -2,11 +2,9 @@ import test from 'ava';
 import { connect, dropDb } from '../../lib/mongo';
 import User from '../User';
 connect();
-dropDb();
 
-test.afterEach(() => {
-  return dropDb();
-});
+test.beforeEach(() => dropDb());
+test.after(() =>  dropDb());
 
 const user = {
   steamid: '1',
