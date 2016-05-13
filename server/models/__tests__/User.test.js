@@ -4,7 +4,7 @@ import User from '../User';
 connect();
 
 test.beforeEach(() => dropDb());
-test.after(() =>  dropDb());
+test.after(() => dropDb());
 
 const user = {
   steamid: '1',
@@ -20,7 +20,7 @@ const user = {
   timecreated: 1328910898,
   personastateflags: 0,
   loccountrycode: 'SK',
-}
+};
 
 test.serial('Create new user', async t => {
   await User.update({ steamid: 1 }, user, {

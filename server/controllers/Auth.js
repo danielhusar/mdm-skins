@@ -1,3 +1,5 @@
+/* eslint no-underscore-dangle:0 */
+
 import passport from 'passport';
 import { Strategy as SteamStrategy } from 'passport-steam';
 import User from '../models/User';

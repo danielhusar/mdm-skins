@@ -9,7 +9,7 @@
     "build": "NODE_ENV=production webpack --config config/production/webpack.js",
     "test": "npm run lint && npm run test:shared && npm run test:server",
     "test:shared": "NODE_ENV=test ava shared/**/*.test.{js,jsx}",
-    "test:server": "NODE_ENV=test ava server/**/*.test.{js,jsx}",
+    "test:server": "NODE_ENV=test ava server/**/*.test.{js,jsx} --serial",
     "test:all": "npm run lint && npm run test:server && npm run test:shared",
     "clean": "rimraf static/assets",
     "lint": "eslint shared client server helpers",
