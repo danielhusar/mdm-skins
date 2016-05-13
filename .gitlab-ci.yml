@@ -1,0 +1,12 @@
+image: node:6
+
+services:
+  - mongo:latest
+
+variables:
+  MONGO_URL: mongodb://mongo:27017/book-test
+
+all_tests:
+  script:
+   - npm install
+   - npm test
