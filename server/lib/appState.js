@@ -30,7 +30,7 @@ export default function (url) {
       fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
         .then(() => {
           const view = renderToString(
-            <Provider store={store}>
+            <Provider store={ store }>
               <RouterContext {...renderProps} />
             </Provider>
           );

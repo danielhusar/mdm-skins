@@ -1,10 +1,10 @@
-image: node:6
+image: node:latest
 
 services:
   - mongo:latest
 
 variables:
-  MONGO_URL: mongodb://mongo:27017/book-test
+  MONGO_URL: mongodb://mongo:27017/mdm-skins-test
 
 all_tests:
   script:

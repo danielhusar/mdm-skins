@@ -6,9 +6,9 @@ import Login from './container/Login';
 import Books from './container/Books';
 
 const routes = (
-  <Route path="/" component={App} >
-    <IndexRoute component={Login} />
-    <Route path="/books" component={Books} />
+  <Route path="/" component={ App } >
+    <IndexRoute component={ Login } />
+    <Route path="/books" component={ Books } />
   </Route>
 );
 

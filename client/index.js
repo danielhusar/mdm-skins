@@ -12,8 +12,8 @@ const store = configureStore(browserHistory, window.__INITIAL_STATE__); // eslin
 const history = syncHistoryWithStore(browserHistory, store);
 
 render((
-  <Provider store={store}>
-    <Router history={history} routes={routes} />
+  <Provider store={ store }>
+    <Router history={ history } routes={ routes } />
   </Provider>
   )
  , document.getElementById('root'));
