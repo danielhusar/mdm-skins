@@ -6,7 +6,7 @@ class Login extends Component {
     return (
       <div className="login">
         <Helmet title="Login" />
-        <a href="/auth/google" className="login__link login__google">Login</a>
+        <a href="/auth/steam" className="login__link login__google">Login</a>
       </div>
     );
   }

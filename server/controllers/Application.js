@@ -32,8 +32,8 @@ export default function () {
   app.use(passport.session());
   // app.use('/api', Api);
 
-  app.get('/auth/google', login());
-  app.get('/auth/google/callback', callback(), redirect());
+  app.get('/auth/steam', login());
+  app.get('/auth/steam/callback', callback(), redirect());
   app.get('/auth/logout', (req, res) => {
     req.logout();
     res.redirect('/');

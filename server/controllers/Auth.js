@@ -1,18 +1,27 @@
 import passport from 'passport';
-import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import { Strategy as SteamStrategy } from 'passport-steam';
 import User from '../models/User';
-import { ENV } from '../../helpers/config';
+import { ENV, config } from '../../helpers/config';
 
-passport.use(new GoogleStrategy({
-  clientID: ENV.GOOGLE_CLIENT_ID,
-  clientSecret: ENV.GOOGLE_CLIENT_SECRET,
-  callbackURL: '/auth/google/callback',
+passport.use(new SteamStrategy({
+  apiKey: ENV.STEAM_API,
+  realm: config.baseURL,
+  returnURL: `${config.baseURL}/auth/steam/callback`,
 },
-  (accessToken, refreshToken, profile, cb) => {
-    User.update({ google_id: profile.id }, {
-      google_id: profile.id,
-      email: profile.emails[0].value,
-      photo: profile.photos[0].value,
+  (identifier, profile, cb) => {
+    User.update({ steamid: profile.id }, {
+      steamid: profile.id,
+      communityvisibilitystate: profile._json.communityvisibilitystate,
+      profilestate: profile._json.profilestate,
+      personaname: profile._json.personaname,
+      profileurl: profile._json.profileurl,
+      avatar: profile._json.avatarfull,
+      personastate: profile._json.personastate,
+      realname: profile._json.realname,
+      timecreated: profile._json.timecreated,
+      personastateflags: profile._json.personastateflags,
+      loccountrycode: profile._json.loccountrycode,
+      locstatecode: profile._json.locstatecode,
       last_logged_at: new Date(),
     }, { upsert: true, setDefaultsOnInsert: true }, err => {
       if (err) throw err;
@@ -24,15 +33,15 @@ passport.serializeUser((user, cb) => cb(null, user));
 passport.deserializeUser((obj, cb) => cb(null, obj));
 
 export function login() {
-  return passport.authenticate('google', { scope: ['email'] });
+  return passport.authenticate('steam', { failureRedirect: '/' });
 }
 
 export function callback() {
-  return passport.authenticate('google', { failureRedirect: '/' });
+  return passport.authenticate('steam', { failureRedirect: '/' });
 }
 
 export function redirect() {
-  return (req, res) => res.redirect(req.session.returnTo || '/books');
+  return (req, res) => res.redirect(req.session.returnTo || '/');
 }
 
 export { passport };

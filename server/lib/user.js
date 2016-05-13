@@ -1,7 +1,5 @@
 export function loggedIn(req, res, next) {
-  if (req.isAuthenticated() && req.path === '/') {
-    return res.redirect('/books');
-  } else if (req.isAuthenticated() || req.path === '/') {
+  if (!req.url.startsWith('/profile') || req.isAuthenticated()) {
     return next();
   } else {
     req.session.returnTo = req.originalUrl || req.url; // eslint-disable-line
