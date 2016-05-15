@@ -9,7 +9,7 @@ import { login, callback, redirect, passport } from './Auth';
 import { loggedIn } from '../lib//user';
 import webpackMiddleware from '../../helpers/webpack';
 import { ENV, isDevelopment } from '../../helpers/config';
-// import Api from '../routes/Api';
+import Routes from '../routes/routes';
 import Content from './Content';
 
 export default function () {
@@ -30,7 +30,7 @@ export default function () {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
-  // app.use('/api', Api);
+  app.use('/', Routes);
 
   app.get('/auth/steam', login());
   app.get('/auth/steam/callback', callback(), redirect());

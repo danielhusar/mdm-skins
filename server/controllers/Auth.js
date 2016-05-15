@@ -31,7 +31,7 @@ passport.use(new SteamStrategy({
     });
   }
 ));
-passport.serializeUser((user, cb) => cb(null, user));
+passport.serializeUser((user, cb) => cb(null, user._json));
 passport.deserializeUser((obj, cb) => cb(null, obj));
 
 export function login() {
