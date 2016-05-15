@@ -32,7 +32,7 @@ passport.use(new SteamStrategy({
   }
 ));
 passport.serializeUser((user, cb) => cb(null, user._json));
-passport.deserializeUser((obj, cb) => cb(null, obj));
+passport.deserializeUser((user, cb) => cb(null, user));
 
 export function login() {
   return passport.authenticate('steam', { failureRedirect: '/' });
