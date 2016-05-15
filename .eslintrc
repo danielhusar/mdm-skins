@@ -2,21 +2,22 @@
   "extends": [
     "airbnb",
     "plugin:react/recommended",
-    "plugin:ava/recommended",
+    "plugin:ava/recommended"
   ],
   "parser": "babel-eslint",
   "plugins": [
     "ava",
-    "react",
+    "babel",
+    "react"
   ],
   "env": {
     "browser": true,
-    "node": true,
-   },
+    "node": true
+  },
   "ecmaFeatures": {
     "jsx": true,
     "es6": true,
-    "classes": true,
+    "classes": true
   },
   "rules": {
     "arrow-body-style": [0],
@@ -27,6 +28,6 @@
     "space-in-parens": [0],
     "ava/no-cb-test": [2],
     "react/jsx-curly-spacing": [2, "always"],
-    "react/no-did-mount-set-state": [0],
+    "react/no-did-mount-set-state": [0]
   }
 }

@@ -10,7 +10,7 @@ class App extends Component { // eslint-disable-line
           title="Book"
           titleTemplate="%s - Book"
         />
-        {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
+        { React.cloneElement(this.props.children, { key: this.props.location.pathname }) }
       </div>
     );
   }
