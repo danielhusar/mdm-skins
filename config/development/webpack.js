@@ -23,7 +23,7 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss'),
+        loader: ExtractTextPlugin.extract('style', 'css!postcss?extension=scss'),
       },
       {
         test: /\.jsx*$/,
@@ -61,6 +61,10 @@ module.exports = {
   },
 
   postcss: function () {
-    return [precss, autoprefixer];
+    return [precss({
+      'import': {
+        'extension': 'scss'
+      }
+    }), autoprefixer];
   }
 };

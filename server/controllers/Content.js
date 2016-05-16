@@ -2,6 +2,8 @@ import appState from '../lib/appState';
 import { renderError, renderPage } from '../views/Content';
 
 const Content = (req, res, next) => {
+  global.__user = req.user;
+
   appState(req.url).then(data => {
     const view = data.view;
     const state = data.state;

@@ -53,6 +53,10 @@ module.exports = {
   ],
 
   postcss: function () {
-    return [precss, autoprefixer];
+    return [precss({
+      'import': {
+        'extension': 'scss'
+      }
+    }), autoprefixer];
   }
 };
