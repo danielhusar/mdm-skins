@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var precss = require('precss');
+var postcssImport = require('postcss-import');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -60,11 +61,11 @@ module.exports = {
     quiet: true
   },
 
-  postcss: function () {
-    return [precss({
-      'import': {
-        'extension': 'scss'
-      }
-    }), autoprefixer];
+  postcss: function (webpack) {
+    return [
+      postcssImport({ addDependencyTo: webpack }), // Must be first item in list
+      precss,
+      autoprefixer
+    ];
   }
 };

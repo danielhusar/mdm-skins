@@ -47,6 +47,11 @@ img[width="1"][height="1"] {
 
 a {
   color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .container {
