@@ -6,7 +6,7 @@ var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
 
   entry: ['webpack-hot-middleware/client', './client/index.js',],
 
@@ -24,7 +24,7 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss?extension=scss'),
+        loader: ExtractTextPlugin.extract('style?sourceMap', 'css?sourceMap!postcss?sourceMap'),
       },
       {
         test: /\.jsx*$/,
