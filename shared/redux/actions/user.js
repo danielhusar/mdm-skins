@@ -12,12 +12,12 @@ export function addUser(user) {
 export function fetchUser() {
   return (dispatch) => {
     return fetch(`${config.baseURL}/api/user`, {
-        credentials: 'include'
-      }).
-      then(response => response.json()).
-      then(response => {
-        dispatch(addUser(response.user));
-        return response.user;
-      });
+      credentials: 'include',
+    })
+    .then(response => response.json())
+    .then(response => {
+      dispatch(addUser(response.user));
+      return response.user;
+    });
   };
 }

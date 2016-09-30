@@ -1,10 +1,10 @@
 import 'babel-polyfill';
-import { configureStore } from '../shared/redux/store/configureStore';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import React from 'react';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, browserHistory } from 'react-router';
+import { configureStore } from '../shared/redux/store/configureStore';
 import routes from '../shared/routes';
 import '../css/style.scss';
 

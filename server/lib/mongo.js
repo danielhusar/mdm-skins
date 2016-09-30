@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import { config } from '../../helpers/config';
 
+mongoose.Promise = global.Promise;
+
 export function connect(cb) {
   if (mongoose.connection.readyState !== 0) {
     return Promise.resolve();

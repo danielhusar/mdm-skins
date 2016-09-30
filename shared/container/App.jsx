@@ -8,7 +8,7 @@ class App extends Component { // eslint-disable-line
   render() {
     return (
       <div>
-        <Helmet title="Index" titleTemplate="%s - MDM Skins"/>
+        <Helmet title="Index" titleTemplate="%s - MDM Skins" />
         <Header user={ this.props.user } />
         <div className="container">
           { React.cloneElement(this.props.children, { key: this.props.location.pathname }) }

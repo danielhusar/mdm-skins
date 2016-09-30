@@ -31,7 +31,7 @@ export default function (url) {
         .then(() => {
           const view = renderToString(
             <Provider store={ store }>
-              <RouterContext {...renderProps} />
+              <RouterContext { ...renderProps } />
             </Provider>
           );
 

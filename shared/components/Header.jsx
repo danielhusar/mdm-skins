@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 
-function Header(props, context) {
+function Header(props) {
   return (
     <header className="header">
       <div className="container u__flex">
@@ -15,12 +15,12 @@ function Header(props, context) {
           <Link to="/about" className="header__link" activeClassName="active">About</Link>
           { props.user ?
             (
-              <span className="center">
-                <a href="/auth/logout" className="header__link">Logout</a>
-                <Link to="/inventory" className="header__avatar">
-                  <img src={ props.user.avatarfull } />
-                </Link>
-              </span>
+            <span className="center">
+              <a href="/auth/logout" className="header__link">Logout</a>
+              <Link to="/inventory" className="header__avatar">
+                <img src={ props.user.avatarfull } />
+              </Link>
+            </span>
             )
             :
             (<a href="/auth/steam" className="header__link">Login</a>)
