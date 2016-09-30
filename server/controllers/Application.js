@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import MongoStore from 'connect-mongo';
 import mongoose from 'mongoose';
 import { login, callback, redirect, passport } from './Auth';
-import { loggedIn } from '../lib//user';
+import { loggedIn, loggedInApi } from '../lib//user';
 import webpackMiddleware from '../../helpers/webpack';
 import { ENV, isDevelopment } from '../../helpers/config';
 import Routes from '../routes/routes';
@@ -30,7 +30,7 @@ export default function () {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use('/', Routes);
+  app.use('/', loggedInApi, Routes);
 
   app.get('/auth/steam', login());
   app.get('/auth/steam/callback', callback(), redirect());
