@@ -7,7 +7,7 @@ import { fetchUser } from '../redux/actions/user';
 class App extends Component { // eslint-disable-line
   render() {
     return (
-      <div className="content">
+      <div>
         <Helmet title="Index" titleTemplate="%s - MDM Skins"/>
         <Header user={ this.props.user } />
         <div className="container">

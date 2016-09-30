@@ -1,19 +1,31 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router'
+
 
 function Header(props, context) {
   return (
     <header className="header">
-      <div className="container">
-        { props.user ?
-          (
-            <div className="center">
-              <a href="/auth/logout">Logout</a>
-              <img src={ props.user.avatarfull } className="header__avatar" />
-            </div>
-          )
-          :
-          (<a href="/auth/steam">Login</a>)
-        }
+      <div className="container u__flex">
+        <Link to="/" className="header__logo">
+          <img src="http://placehold.it/150x50?text=Logo" />
+        </Link>
+        <div className="header__links center">
+          <Link to="/browse" className="header__link" activeClassName="active">Browse</Link>
+          <Link to="/help" className="header__link" activeClassName="active">Help</Link>
+          <Link to="/about" className="header__link" activeClassName="active">About</Link>
+          { props.user ?
+            (
+              <span className="center">
+                <a href="/auth/logout" className="header__link">Logout</a>
+                <Link to="/inventory" className="header__avatar">
+                  <img src={ props.user.avatarfull } />
+                </Link>
+              </span>
+            )
+            :
+            (<a href="/auth/steam" className="header__link">Login</a>)
+          }
+        </div>
       </div>
     </header>
   );
