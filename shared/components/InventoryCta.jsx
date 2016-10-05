@@ -1,32 +1,40 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import isNumeric from 'validator/lib/isNumeric';
 import Item from './Item';
 
 class InventoryCta extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
+
     if (!isNumeric(this.refs.price.value)) {
-      this.setState({error: true});
+      this.setState({ error: true });
     } else {
-      this.props.cta({ item..., price: this.refs.price.value });
+      this.setState({ error: false });
+      this.props.cta({ ...this.props.item, price: this.refs.price.value });
     }
   }
 
   render() {
     const inputClasses = {
       item__input: true,
-      error: this.state.error,
+      error: !!this.state.error,
     };
 
     return (
-      <Item item={ this.props.item } =>
-        <form className="g__row" onSubmit={this.handleSubmit}>
+      <Item item={ this.props.item }>
+        <form className="g__row" onSubmit={ this.handleSubmit }>
           <div className="g__c6">
-            <input type="number" class={ inputClasses } ref="price" />
+            <input type="number" className={ classNames(inputClasses) } ref="price" />
           </div>
           <div className="g__c6">
-            <button type="submit" className="btn btn__primary">Sell</button>
+            <button type="submit" className="btn btn__primary btn__full">Sell</button>
           </div>
         </form>
       </Item>

@@ -5,12 +5,13 @@
   flex-direction: row;
   flex-wrap: wrap;
   text-decoration: none;
+  margin: 0 -1%;
 }
 
 .item {
-  min-width: 31.33%;
-  width: 31.33%;
-  flex-basis: 31.33%;
+  min-width: 23%;
+  width: 23%;
+  flex-basis: 23%;
   margin: 2% 1% 0;
   display: block;
   background: #fefeff;
@@ -19,4 +20,19 @@
   opacity: 1;
   text-decoration: none;
   outline: none;
+}
+
+.item__photo {
+  max-height: 150px;
+}
+
+.item__input {
+  border: 1px solid #ccc;
+  padding: 3px 8px;
+  height: 35px;
+  width: 100%;
+
+  &.error {
+    border-color: red;
+  }
 }

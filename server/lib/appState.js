@@ -6,28 +6,28 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { configureStore } from '../../shared/redux/store/configureStore';
 import routes from '../../shared/routes';
 
-function fetchComponentData(dispatch, components, params) {
+function fetchComponentData(dispatch, components, params, req) {
   const needs = components.reduce((prev, current) => {
     return (current.need || [])
       .concat((current.WrappedComponent && (current.WrappedComponent.need !== current.need) ? current.WrappedComponent.need : []) || [])
       .concat(prev);
   }, []);
-  const promises = needs.map(need => dispatch(need(params)));
+  const promises = needs.map(need => dispatch(need.call(req, params)));
   return Promise.all(promises);
 }
 
-export default function (url) {
-  const memoryHistory = createMemoryHistory(url);
+export default function (req) {
+  const memoryHistory = createMemoryHistory(req.url);
   const store = configureStore(memoryHistory);
   const history = syncHistoryWithStore(memoryHistory, store);
 
   return new Promise((resolve, reject) => {
-    match({ history, routes, location: url }, (err, redirectLocation, renderProps) => {
+    match({ history, routes, location: req.url }, (err, redirectLocation, renderProps) => {
       if (!renderProps) {
         return resolve({ err: 404 });
       }
 
-      fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
+      fetchComponentData(store.dispatch, renderProps.components, renderProps.params, req)
         .then(() => {
           const view = renderToString(
             <Provider store={ store }>

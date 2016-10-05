@@ -30,7 +30,6 @@ export default function () {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use('/', loggedInApi, Routes);
 
   app.get('/auth/steam', login());
   app.get('/auth/steam/callback', callback(), redirect());
@@ -39,6 +38,7 @@ export default function () {
     res.redirect('/');
   });
 
+  app.use('/api', loggedInApi, Routes);
   app.use(loggedIn, Content);
   return app;
 }

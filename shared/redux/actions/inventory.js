@@ -1,7 +1,6 @@
-import fetch from 'isomorphic-fetch';
 import * as ActionTypes from '../constants/constants';
 import { addNotification } from './notification';
-import { config } from '../../../helpers/config';
+import { get, post } from '../../../helpers/request';
 
 export function addInventory(inventory) {
   return {
@@ -12,27 +11,20 @@ export function addInventory(inventory) {
 
 export function fetchInventory() {
   return (dispatch) => {
-    return fetch(`${config.baseURL}/api/auth/inventory`)
-    .then(response => response.json())
-    .then(response => {
-      dispatch(addInventory(response));
-      return response;
-    });
+    return get.call(this, '/api/auth/inventory')
+    .then(response => dispatch(addInventory(response.body)));
   };
 }
 
 export function sellItem(item) {
   return (dispatch) => {
-    return fetch(`${config.baseURL}/api/auth/sell`, { body: JSON.stringify(item) })
-    .then(response => response.json())
+    return post('/api/auth/sell-item', item)
     .then(response => {
-      if (response.success) {
+      if (response.body.success) {
         dispatch(addNotification('succes', 'Item added succesfully'));
       } else {
         dispatch(addNotification('error', 'There was error adding your item'));
       }
-
-      return response;
     });
   };
 }

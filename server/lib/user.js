@@ -8,7 +8,7 @@ export function loggedIn(req, res, next) {
 }
 
 export function loggedInApi(req, res, next) {
-  if (!req.url.startsWith('/api') || !req.url.startsWith('/api/auth') || !!global.__user) {
+  if (!req.url.startsWith('/api/auth') || req.isAuthenticated()) {
     return next();
   }
 

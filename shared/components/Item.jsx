@@ -7,9 +7,9 @@ class Item extends Component {
         <div className="item__photo">
           <img src={ this.props.item.image } />
         </div>
-        <div className="sp__1"></div>
+        <div className="sp__2"></div>
         <div className="item__name">{ this.props.item.name }</div>
-        <div className="sp__1"></div>
+        <div className="sp__2"></div>
         { this.props.children }
       </div>
     );

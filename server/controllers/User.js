@@ -2,9 +2,13 @@ import steamUserInventory from 'steam-user-inventory';
 import loggedIn from '../lib/user';
 
 export function user(req, res) {
-  return res.json({ user: global.__user || req.user || null });
+  return res.json({ user: req.user || req.user || null });
 }
 
 export function inventory(req, res) {
-  return steamUserInventory(global.__user.personaname).then(data => res.json(data));
+  return steamUserInventory(req.user.personaname).then(data => res.json(data));
+}
+
+export function sellItem(req, res) {
+  return res.json({ success: true });
 }

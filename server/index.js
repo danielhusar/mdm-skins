@@ -4,6 +4,8 @@ import { connect } from './lib/mongo';
 import Application from './controllers/Application';
 import { config, isDevelopment } from '../helpers/config';
 
+global.__SERVER__ = true;
+
 connect(() => {
   const app = Application();
 

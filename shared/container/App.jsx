@@ -18,7 +18,7 @@ class App extends Component { // eslint-disable-line
   }
 }
 
-App.need = [() => fetchUser()];
+App.need = [fetchUser];
 
 App.propTypes = {
   location: PropTypes.object.isRequired,
