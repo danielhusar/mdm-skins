@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var precss = require('precss');
 var postcssImport = require('postcss-import');
+var calc = require('postcss-calc');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -65,7 +66,8 @@ module.exports = {
     return [
       postcssImport({ addDependencyTo: webpack }), // Must be first item in list
       precss,
-      autoprefixer
+      autoprefixer,
+      calc
     ];
   }
 };

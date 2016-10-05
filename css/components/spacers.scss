@@ -1,0 +1,13 @@
+@for $i from 1 to 10 {
+  .sp__$(i) {
+    display: block;
+    height: calc(10px * $i);
+  }
+}
+
+@for $i from 1 to 10 {
+  .sp__0$(i) {
+    display: block;
+    height: calc(1px * $i);
+  }
+}

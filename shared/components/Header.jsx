@@ -10,7 +10,6 @@ function Header(props) {
           <img src="http://placehold.it/150x50?text=Logo" />
         </Link>
         <div className="header__links center">
-          <Link to="/browse" className="header__link" activeClassName="active">Browse</Link>
           <Link to="/help" className="header__link" activeClassName="active">Help</Link>
           <Link to="/about" className="header__link" activeClassName="active">About</Link>
           { props.user ?

@@ -1,0 +1,22 @@
+.items {
+  display: flex;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-decoration: none;
+}
+
+.item {
+  min-width: 31.33%;
+  width: 31.33%;
+  flex-basis: 31.33%;
+  margin: 2% 1% 0;
+  display: block;
+  background: #fefeff;
+  border: 1px solid #d9e5f0;
+  padding: 20px;
+  opacity: 1;
+  text-decoration: none;
+  outline: none;
+}

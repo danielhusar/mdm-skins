@@ -1,0 +1,18 @@
+.g__row {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+@for $i from 1 to 12 {
+  .g__c$(i) {
+    flex-basis: calc((100% / 12) * $i);
+    max-width: calc((100% / 12) * $i);
+    width: calc((100% / 12) * $i);
+    flex: 0 0 auto;
+    padding: 0 10px;
+    position: relative;
+  }
+}
