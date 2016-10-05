@@ -10,6 +10,7 @@ import '../css/style.scss';
 
 const store = configureStore(browserHistory, window.__INITIAL_STATE__); // eslint-disable-line
 const history = syncHistoryWithStore(browserHistory, store);
+window.__SERVER__ = false;
 
 render((
   <Provider store={ store }>

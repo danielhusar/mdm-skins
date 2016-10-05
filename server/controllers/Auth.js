@@ -11,8 +11,8 @@ passport.use(new SteamStrategy({
   returnURL: `${config.baseURL}/auth/steam/callback`,
 },
   (identifier, profile, cb) => {
-    User.update({ steamid: profile.id }, {
-      steamid: profile.id,
+    User.update({ steam_id: profile.id }, {
+      steam_id: profile.id,
       communityvisibilitystate: profile._json.communityvisibilitystate,
       profilestate: profile._json.profilestate,
       personaname: profile._json.personaname,

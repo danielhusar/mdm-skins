@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const userSchema = new Schema({
-  steamid: { type: 'String', required: true },
+  steam_id: { type: 'String', required: true },
   communityvisibilitystate: { type: 'Number', required: true },
   profilestate: { type: 'Number', required: true },
   personaname: { type: 'String', required: true },
