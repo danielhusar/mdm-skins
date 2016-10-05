@@ -9,8 +9,6 @@ export function addUser(user) {
 }
 
 export function fetchUser(req) {
-  return (dispatch) => {
-    return get.call(this, '/api/user')
-      .then(response => dispatch(addUser(response.body.user)));
-  };
+  return dispatch => get.call(this, '/api/user')
+    .then(response => dispatch(addUser(response.body.user)));
 }
