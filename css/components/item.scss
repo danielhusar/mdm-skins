@@ -9,9 +9,9 @@
 }
 
 .item {
-  min-width: 23%;
-  width: 23%;
-  flex-basis: 23%;
+  min-width: 31.333%;
+  width: 31.333%;
+  flex-basis: 31.333%;
   margin: 2% 1% 0;
   display: block;
   background: #fefeff;
@@ -24,6 +24,11 @@
 
 .item__photo {
   max-height: 150px;
+  text-align: center;
+
+  img {
+    max-height: inherit;
+  }
 }
 
 .item__input {

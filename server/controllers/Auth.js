@@ -11,8 +11,8 @@ passport.use(new SteamStrategy({
   returnURL: `${config.baseURL}/auth/steam/callback`,
 },
   (identifier, profile, cb) => {
-    User.update({ steam_id: profile.id }, {
-      steam_id: profile.id,
+    User.update({ id: profile.id }, {
+      id: profile.id,
       communityvisibilitystate: profile._json.communityvisibilitystate,
       profilestate: profile._json.profilestate,
       personaname: profile._json.personaname,
@@ -27,7 +27,12 @@ passport.use(new SteamStrategy({
       last_logged_at: new Date(),
     }, { upsert: true, setDefaultsOnInsert: true }, err => {
       if (err) throw err;
-      cb(null, profile);
+      User.findOne({ id: profile.id }, '_id', (err, data) => {
+        if (err) throw err;
+        profile._id = data._id;
+        cb(null, profile);
+      });
+
     });
   }
 ));

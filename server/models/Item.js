@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const itemSchema = new Schema({
-  steam_id: { type: 'String', required: true },
+  id: { type: 'String', required: true },
   user_id: { type: 'ObjectId', ref: 'User' },
   amount: { type: 'Number', required: true },
   pos: { type: 'Number', required: true },

@@ -11,14 +11,16 @@ export function inventory(req, res) {
 }
 
 export function sellItem(req, res) {
-  console.log(res.body);
+  console.log(req.body);
+  console.log(req.user);
 
   const item = new Item({
-    ...res.body,
+    ...req.body,
     user_id: req.user.id
   });
 
   item.save(function (err) {
+    console.log(err);
     if (err) {
       return res.json({ success: false });
     } else {
