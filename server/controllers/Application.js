@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import MongoStore from 'connect-mongo';
 import mongoose from 'mongoose';
 import { login, callback, redirect, passport } from './Auth';
-import { loggedIn, loggedInApi } from '../lib//user';
+import { loggedIn, loggedInApi } from '../lib//logged-in-middleware';
 import webpackMiddleware from '../../helpers/webpack';
 import { ENV, isDevelopment } from '../../helpers/config';
 import Routes from '../routes/routes';
