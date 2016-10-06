@@ -13,7 +13,6 @@ const userSchema = new Schema({
   personastateflags: { type: 'Number', required: true },
   loccountrycode: { type: 'String', required: true },
   locstatecode: { type: 'String', required: true },
-
   created_at: { type: 'Date', default: Date.now, required: true },
   last_logged_at: { type: 'Date', default: Date.now, required: true },
 });

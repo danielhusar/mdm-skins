@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const itemSchema = new Schema({
   id: { type: 'String', required: true },
-  user_id: { type: 'ObjectId', ref: 'User' },
+  user: { type: 'ObjectId', ref: 'User' },
   amount: { type: 'Number', required: true },
   pos: { type: 'Number', required: true },
   name: { type: 'String', required: true },

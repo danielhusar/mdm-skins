@@ -25,18 +25,12 @@ passport.use(new SteamStrategy({
       loccountrycode: profile._json.loccountrycode,
       locstatecode: profile._json.locstatecode,
       last_logged_at: new Date(),
-    }, { upsert: true, setDefaultsOnInsert: true }, err => {
-      if (err) throw err;
-      User.findOne({ id: profile.id }, '_id', (err, data) => {
-        if (err) throw err;
-        profile._id = data._id;
-        cb(null, profile);
-      });
-
-    });
+    }, { upsert: true, setDefaultsOnInsert: true })
+    .then(() => User.findOne({ id: profile.id }))
+    .then(profile => cb(null, profile));
   }
 ));
-passport.serializeUser((user, cb) => cb(null, user._json));
+passport.serializeUser((user, cb) => cb(null, user));
 passport.deserializeUser((user, cb) => cb(null, user));
 
 export function login() {
