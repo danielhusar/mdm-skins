@@ -22,4 +22,6 @@ const itemSchema = new Schema({
   created_at: { type: 'Date', default: Date.now, required: true },
 });
 
+itemSchema.index({ user: 1 });
+
 export default mongoose.model('Item', itemSchema);
