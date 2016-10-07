@@ -1,0 +1,19 @@
+.sub-nav {
+  margin: 20px 0 0;
+}
+
+.sub-nav__link {
+  font-size: 14px;
+  padding-right: 20px;
+  border-right: 1px solid #ccc;
+  color: #888;
+
+  &.active,
+  &:hover {
+    color: #222;
+  }
+}
+
+.sub-nav__link + .sub-nav__link {
+  padding-left: 20px;
+}

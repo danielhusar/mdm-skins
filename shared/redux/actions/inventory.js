@@ -10,12 +10,12 @@ export function addInventory(inventory) {
 }
 
 export function fetchInventory() {
-  return dispatch => get.call(this, '/api/auth/inventory')
+  return dispatch => get.call(this, '/api/auth/user/inventory')
     .then(response => dispatch(addInventory(response.body)));
 }
 
 export function sellItem(item) {
-  return dispatch => post('/api/auth/sell-item', item)
+  return dispatch => post('/api/auth/item/sell', item)
     .then(response => {
       if (response.body.success) {
         dispatch(addNotification('succes', 'Item added succesfully'));

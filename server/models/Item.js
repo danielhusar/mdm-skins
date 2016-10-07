@@ -2,7 +2,6 @@ import mongoose, { Schema } from 'mongoose';
 
 const itemSchema = new Schema({
   id: { type: 'String', required: true },
-  user: { type: 'ObjectId', ref: 'User' },
   amount: { type: 'Number', required: true },
   pos: { type: 'Number', required: true },
   name: { type: 'String', required: true },
@@ -19,8 +18,14 @@ const itemSchema = new Schema({
   exterior: { type: 'String' },
   quality: { type: 'String' },
   price: { type: 'Number', required: true },
-  created_at: { type: 'Date', default: Date.now, required: true },
-});
+
+  seller: { type: 'ObjectId', ref: 'User', required: true },
+  buyer: { type: 'ObjectId', ref: 'User' },
+  user_status: { type: 'String', default: 'selling', required: true }, // selling, sold, deleted
+  buyer_status: { type: 'String', default: '' }, // bought
+  user_confirmed: { type: 'Boolean', default: false, required: true },
+  buyer_confirmed: { type: 'Boolean', default: false, required: true },
+}, { timestamps: true });
 
 itemSchema.index({ user: 1 });
 

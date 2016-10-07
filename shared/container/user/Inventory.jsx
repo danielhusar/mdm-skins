@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import InventoryCta from '../components/InventoryCta';
-import { fetchInventory } from '../redux/actions/inventory';
-import { sellItem } from '../redux/actions/inventory';
+import InventoryCta from '../../components/InventoryCta';
+import UserNav from '../../components/UserNav';
+import { fetchInventory } from '../../redux/actions/inventory';
+import { sellItem } from '../../redux/actions/inventory';
 
 class Inventory extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Inventory extends Component {
     return (
       <div className="index">
         <Helmet title="Inventory" />
+        <UserNav />
         <div className="content">
           <div className="items">
             { this.props.inventory ? this.props.inventory.map((item, i) => (<InventoryCta item={ item } key={ i } cta={ this.sellItem } />)) : null }

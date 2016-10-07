@@ -24,7 +24,6 @@ passport.use(new SteamStrategy({
       personastateflags: profile._json.personastateflags,
       loccountrycode: profile._json.loccountrycode,
       locstatecode: profile._json.locstatecode,
-      last_logged_at: new Date(),
     }, { upsert: true, setDefaultsOnInsert: true })
     .then(() => User.findOne({ id: profile.id }))
     .then(profile => cb(null, profile));

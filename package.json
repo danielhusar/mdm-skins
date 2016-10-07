@@ -12,7 +12,9 @@
     "test:all": "npm run lint && npm run test:server && npm run test:shared",
     "clean": "rimraf static/assets",
     "lint": "eslint --ext .js --ext .jsx client helpers server shared",
-    "fixup": "npm run lint -- --fix"
+    "fixup": "npm run lint -- --fix",
+    "console:dev": "NODE_ENV=development node console.js",
+    "console:prod": "NODE_ENV=production node console.js"
   },
   "repository": {
     "type": "git",

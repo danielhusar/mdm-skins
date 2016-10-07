@@ -16,7 +16,7 @@ function Header(props) {
             (
             <span className="center">
               <a href="/auth/logout" className="header__link">Logout</a>
-              <Link to="/profile/inventory" className="header__avatar">
+              <Link to="/profile/summary" className="header__avatar">
                 <img src={ props.user.avatar } />
               </Link>
             </span>
