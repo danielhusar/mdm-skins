@@ -7,7 +7,7 @@ import Summary from './container/user/Summary';
 import Inventory from './container/user/Inventory';
 import Selling from './container/user/Selling';
 import Sold from './container/user/Sold';
-import Bought from './container/user/Bought';
+import Purchased from './container/user/Purchased';
 import About from './container/About';
 import Help from './container/Help';
 
@@ -20,7 +20,7 @@ const routes = (
     <Route path="/profile/inventory" component={ Inventory } />
     <Route path="/profile/selling" component={ Selling } />
     <Route path="/profile/sold" component={ Sold } />
-    <Route path="/profile/bought" component={ Bought } />
+    <Route path="/profile/purchased" component={ Purchased } />
   </Route>
 );
 

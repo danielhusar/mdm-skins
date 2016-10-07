@@ -2,16 +2,16 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import UserNav from '../../components/UserNav';
 
-function Bought() {
+function Purchased() {
   return (
     <div className="index">
-      <Helmet title="Bought" />
+      <Helmet title="Purchased" />
       <UserNav />
-      <div>Bought</div>
+      <div>Purchased</div>
     </div>
   );
 }
 
-Bought.propTypes = {};
+Purchased.propTypes = {};
 
-export default Bought;
+export default Purchased;

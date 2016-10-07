@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { fetchUser } from '../redux/actions/user';
 
 class App extends Component { // eslint-disable-line
@@ -13,6 +14,7 @@ class App extends Component { // eslint-disable-line
         <div className="container">
           { React.cloneElement(this.props.children, { key: this.props.location.pathname, user: this.props.user }) }
         </div>
+        <Footer />
       </div>
     );
   }
