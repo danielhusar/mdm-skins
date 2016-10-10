@@ -64,11 +64,20 @@
 .btn__primary {
   background: #2398ff;
   border-color: #2398ff;
-  color: white;
 
   &:hover {
     border-color: #1c81da;
     background: #1c81da;
+  }
+}
+
+.btn__secondary {
+  background: #e6ff8c;
+  border-color: #d9f573;
+  color: black;
+
+  &:hover {
+    background: #d9f573;
   }
 }
 

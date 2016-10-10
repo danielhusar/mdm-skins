@@ -1,4 +1,8 @@
 export const ADD_USER = 'ADD_USER';
+
 export const ADD_INVENTORY = 'ADD_INVENTORY';
+
 export const ADD_NOTIFICATION = 'ADD_NOTIFICATION';
 export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
+
+export const ADD_SELLING = 'ADD_SELLING';

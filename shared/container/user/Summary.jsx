@@ -4,6 +4,8 @@ import { countries } from 'country-data';
 import UserNav from '../../components/UserNav';
 
 function Summary(props) {
+  const country = countries[props.user.loccountrycode] || {};
+
   return (
     <div className="index">
       <Helmet title="Summary" />
@@ -25,7 +27,7 @@ function Summary(props) {
             </tr>
             <tr>
               <td className="user__summary-label">Country:</td>
-              <td className="user__summary-val">{(countries[props.user.loccountrycode] || {}).name}</td>
+              <td className="user__summary-val">{country.name} {country.emoji}</td>
             </tr>
             <tr>
               <td className="user__summary-val" colSpan="2"><br /><img src={ props.user.avatar } /></td>

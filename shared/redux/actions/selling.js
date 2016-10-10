@@ -1,22 +1,21 @@
 import * as ActionTypes from '../constants/constants';
-import { fetchSelling } from './selling';
 import { addNotification } from './notification';
 import { get, post } from '../../../helpers/request';
 
-export function addInventory(inventory) {
+export function addSelling(selling) {
   return {
-    type: ActionTypes.ADD_INVENTORY,
-    inventory,
+    type: ActionTypes.ADD_SELLING,
+    selling,
   };
 }
 
-export function fetchInventory() {
-  return dispatch => get.call(this, '/api/auth/user/inventory')
-    .then(response => dispatch(addInventory(response.body)));
+export function fetchSelling() {
+  return dispatch => get.call(this, '/api/auth/user/selling')
+    .then(response => dispatch(addSelling(response.body)));
 }
 
-export function sellItem(item) {
-  return dispatch => post('/api/auth/item/sell', item)
+export function deleteItem(item) {
+  return dispatch => post('/api/auth/item/delete', item)
     .then(response => {
       if (response.body.success) {
         dispatch(addNotification('succes', 'Item added succesfully'));
