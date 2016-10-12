@@ -16,12 +16,11 @@ export function fetchSelling() {
 
 export function deleteItem(item) {
   return dispatch => post('/api/auth/item/delete', item)
-    .then(response => {
-      if (response.body.success) {
+    .then(
+      () => {
         dispatch(addNotification('succes', 'Item added succesfully'));
         dispatch(fetchSelling());
-      } else {
-        dispatch(addNotification('error', 'There was error adding your item'));
-      }
-    });
+      },
+      () => dispatch(addNotification('error', 'There was error adding your item'))
+    );
 }

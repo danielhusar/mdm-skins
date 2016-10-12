@@ -17,12 +17,11 @@ export function fetchInventory() {
 
 export function sellItem(item) {
   return dispatch => post('/api/auth/item/sell', item)
-    .then(response => {
-      if (response.body.success) {
+    .then(
+      () => {
         dispatch(addNotification('succes', 'Item added succesfully'));
         dispatch(fetchSelling());
-      } else {
-        dispatch(addNotification('error', 'There was error adding your item'));
-      }
-    });
+      },
+      () => dispatch(addNotification('error', 'There was error adding your item'))
+    );
 }

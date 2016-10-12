@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:efrafa/mdm-skins.git"
+    "url": "git@github.com:danielhusar/mdm-skins.git"
   },
   "bugs": {
     "url": ""
@@ -103,7 +103,7 @@
     "webpack-isomorphic-tools": "^2.2.50"
   },
   "engines": {
-    "node": ">=5"
+    "node": ">=6"
   },
   "ava": {
     "babel": "inherit",
