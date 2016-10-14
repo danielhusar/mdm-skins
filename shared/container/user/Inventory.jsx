@@ -22,14 +22,16 @@ class Inventory extends Component {
   }
 
   haveItem(item) {
-    let ret = false;
+    if (!this.props.selling) { return false; }
+    let match = false;
+
     this.props.selling.forEach(sellingItem => {
       if (sellingItem.id === item.id) {
-        ret = true;
+        match = true;
       }
     });
 
-    return ret;
+    return match;
   }
 
   render() {
