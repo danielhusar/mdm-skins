@@ -11,7 +11,7 @@ const itemSchema = new Schema({
   tradable: { type: 'Number', required: true },
   marketable: { type: 'Number', required: true },
   marketTradableRestriction: { type: 'String', required: true },
-  link: { type: 'String', required: true },
+  link: { type: 'String' },
   image: { type: 'String', required: true },
   category: { type: 'String' },
   type: { type: 'String' },

@@ -5,6 +5,7 @@ import Loading from 'react-loading';
 import InventoryCta from '../../components/InventoryCta';
 import UserNav from '../../components/UserNav';
 import { fetchInventory, sellItem } from '../../redux/actions/inventory';
+import { fetchSelling } from '../../redux/actions/selling';
 
 class Inventory extends Component {
   constructor(props) {
@@ -20,6 +21,17 @@ class Inventory extends Component {
     this.props.sellItem(item);
   }
 
+  haveItem(item) {
+    let ret = false;
+    this.props.selling.forEach(sellingItem => {
+      if (sellingItem.id === item.id) {
+        ret = true;
+      }
+    });
+
+    return ret;
+  }
+
   render() {
     return (
       <div className="index">
@@ -28,8 +40,12 @@ class Inventory extends Component {
         <div className="content">
           <div className="items">
             { this.props.inventory ?
-              this.props.inventory.map((item, i) => (<InventoryCta item={ item } key={ i } cta={ this.sellItem } />))
-              : <Loading type='spin' color='#e3e3e3' /> }
+              this.props.inventory.map((item, i) => (
+                !this.haveItem(item) ?
+                  <InventoryCta item={ item } key={ i } cta={ this.sellItem } />
+                : null
+              ))
+            : <Loading type="spin" color="#e3e3e3" /> }
           </div>
         </div>
       </div>
@@ -37,13 +53,14 @@ class Inventory extends Component {
   }
 }
 
-Inventory.need = [fetchInventory];
+Inventory.need = [fetchInventory, fetchSelling];
 
 function mapStateToProps(state) {
-  const { inventory } = state;
+  const { inventory, selling } = state;
 
   return {
     inventory,
+    selling,
   };
 }
 
@@ -54,5 +71,6 @@ Inventory.propTypes = {
 
 export default connect(mapStateToProps, {
   fetchInventory,
+  fetchSelling,
   sellItem,
 })(Inventory);
