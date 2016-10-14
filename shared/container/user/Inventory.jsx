@@ -21,17 +21,22 @@ class Inventory extends Component {
     this.props.sellItem(item);
   }
 
-  haveItem(item) {
-    if (!this.props.selling) { return false; }
-    let match = false;
+  showItem(item) {
+    let show = true;
 
-    this.props.selling.forEach(sellingItem => {
-      if (sellingItem.id === item.id) {
-        match = true;
-      }
-    });
+    if (item.marketable !== 1 || item.tradable !== 1) {
+      show = false;
+    }
 
-    return match;
+    if (this.props.selling && show) {
+      this.props.selling.forEach(sellingItem => {
+        if (sellingItem.id === item.id) {
+          show = false;
+        }
+      });
+    }
+
+    return show;
   }
 
   render() {
@@ -43,7 +48,7 @@ class Inventory extends Component {
           <div className="items">
             { this.props.inventory ?
               this.props.inventory.map((item, i) => (
-                !this.haveItem(item) ?
+                this.showItem(item) ?
                   <InventoryCta item={ item } key={ i } cta={ this.sellItem } />
                 : null
               ))

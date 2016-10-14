@@ -26,6 +26,8 @@ class Selling extends Component {
         <Helmet title="Selling" />
         <UserNav />
         <div className="content">
+          Total items: { this.props.selling.length }
+
           <div className="items">
             { this.props.selling ?
               this.props.selling.map((item, i) => (<SellingCta item={ item } key={ i } cta={ this.deleteItem } />))
