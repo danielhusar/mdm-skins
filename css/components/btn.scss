@@ -72,12 +72,20 @@
 }
 
 .btn__secondary {
-  background: #e6ff8c;
-  border-color: #d9f573;
-  color: black;
+  background: #CBE32D;
+  border-color: #A8CD1B;
 
   &:hover {
-    background: #d9f573;
+    background: #A8CD1B;
+  }
+}
+
+.btn__alt {
+  background: #6DBDD6;
+  border-color: #6DBDD6;
+
+  &:hover {
+    background: #6DBDD6;
   }
 }
 

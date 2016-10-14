@@ -6,6 +6,10 @@
   margin: 0 -10px;
 }
 
+.g__row-fit {
+  margin: 0;
+}
+
 @for $i from 1 to 12 {
   .g__c$(i) {
     flex-basis: calc((100% / 12) * $i);
@@ -14,5 +18,9 @@
     flex: 0 0 auto;
     padding: 0 10px;
     position: relative;
+  }
+
+  .g__row-fit .g__c$(i) {
+    padding: 0;
   }
 }

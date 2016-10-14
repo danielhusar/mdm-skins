@@ -20,6 +20,7 @@
   opacity: 1;
   text-decoration: none;
   outline: none;
+  position: relative;
 }
 
 .item__photo {
@@ -36,6 +37,8 @@
   padding: 3px 8px;
   height: 35px;
   width: 100%;
+  outline: none;
+  border-right: 0;
 
   &.error {
     border-color: red;
@@ -44,4 +47,26 @@
 
 .item__user-avatar {
   height: 35px;
+}
+
+.item__user-avatar-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.item__meta {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+
+.item__category {
+  text-align: left;
+  margin-top: 10px;
+  background: #4A96AD;
+  color: white;
+  padding: 2px 8px;
+  font-size: 12px;
 }

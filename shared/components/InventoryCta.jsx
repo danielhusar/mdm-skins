@@ -29,11 +29,11 @@ class InventoryCta extends Component {
 
     return (
       <Item item={ this.props.item }>
-        <form className="g__row" onSubmit={ this.handleSubmit }>
-          <div className="g__c6">
+        <form className="g__row g__row-fit" onSubmit={ this.handleSubmit }>
+          <div className="g__c5">
             <input type="number" className={ classNames(inputClasses) } ref="price" />
           </div>
-          <div className="g__c6">
+          <div className="g__c7">
             <button type="submit" className="btn btn__primary btn__full">Sell</button>
           </div>
         </form>
