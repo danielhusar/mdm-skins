@@ -2,7 +2,7 @@
 import { Route, IndexRoute } from 'react-router';
 import React from 'react';
 import App from './container/App';
-import Index from './container/Index';
+import Browse from './container/Browse';
 import Summary from './container/user/Summary';
 import Inventory from './container/user/Inventory';
 import Selling from './container/user/Selling';
@@ -13,7 +13,8 @@ import Help from './container/Help';
 
 const routes = (
   <Route path="/" component={ App } >
-    <IndexRoute component={ Index } />
+    <IndexRoute component={ Browse } />
+    <Route path="/browse/:page" component={ Browse } />
     <Route path="/help" component={ Help } />
     <Route path="/about" component={ About } />
     <Route path="/profile/summary" component={ Summary } />

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Item from './Item';
 
-class SellingCta extends Component {
+class BrowseCta extends Component {
   constructor(props) {
     super(props);
     this.handleCta = this.handleCta.bind(this);
@@ -15,15 +15,19 @@ class SellingCta extends Component {
   render() {
     return (
       <Item item={ this.props.item }>
-        <button type="submit" className="btn btn__primary btn__full" onClick={ this.handleCta }>Delete</button>
+        { this.props.user
+          ? <button type="submit" className="btn btn__primary btn__full" onClick={ this.handleCta }>Buy</button>
+          : null
+        }
       </Item>
     );
   }
 }
 
-SellingCta.propTypes = {
+BrowseCta.propTypes = {
+  user: PropTypes.object,
   item: PropTypes.object.isRequired,
   cta: PropTypes.func.isRequired,
 };
 
-export default SellingCta;
+export default BrowseCta;

@@ -1,19 +1,19 @@
 import Item from '../models/Item';
 const limit = 9;
 
-export function total(req, res) {
+export function settings(req, res) {
   Item.find({
     seller_status: 'selling'
   })
   .count()
   .then(
-    total => res.json({ total, limit }),
+    total => res.json({ total, limit, pages: Math.ceil(total / limit) }),
     () => res.sendStatus(422)
   );
 }
 
 export function browse(req, res) {
-  const offset = (Number(req.body.page) || 0) * limit;
+  const offset = ((Number(req.body.page) || 1) * limit) - limit;
 
   Item.find({
     seller_status: 'selling'

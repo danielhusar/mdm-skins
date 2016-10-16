@@ -14,7 +14,10 @@ class Inventory extends Component {
   }
 
   componentWillMount() {
-    if (!this.props.inventory) { this.props.fetchInventory(); }
+    if (!this.props.inventory) {
+      this.props.fetchSelling();
+      this.props.fetchInventory();
+    }
   }
 
   sellItem(item) {
@@ -40,7 +43,7 @@ class Inventory extends Component {
   }
 
   render() {
-    const items = this.props.inventory
+    const items = this.props.inventory && this.props.selling
       ? this.props.inventory.map((item, i) => (this.showItem(item) ? <InventoryCta item={ item } key={ i } cta={ this.sellItem } /> : null))
       : <Loading type="spin" color="#e3e3e3" />;
 
@@ -72,6 +75,7 @@ function mapStateToProps(state) {
 
 Inventory.propTypes = {
   inventory: PropTypes.array,
+  fetchSelling: PropTypes.func.isRequired,
   fetchInventory: PropTypes.func.isRequired,
 };
 

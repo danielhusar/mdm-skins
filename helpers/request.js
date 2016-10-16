@@ -16,6 +16,10 @@ export function post(url, data) {
   const request = superagent.post(`${config.baseURL}${url}`)
     .set('Accept', 'application/json');
 
+  if (__SERVER__ && this && this.get('cookie')) {
+    request.set('cookie', this.get('cookie'));
+  }
+
   if (data) {
     request.send(data);
   }
