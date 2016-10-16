@@ -8,7 +8,6 @@ const router = express.Router(); // eslint-disable-line
 router.route('/user').get(UserController.user);
 
 router.route('/items/browse').post(ItemsController.browse);
-router.route('/items/settings').post(ItemsController.settings);
 
 router.route('/auth/user/inventory').get(UserController.inventory);
 router.route('/auth/user/selling').get(UserController.selling);

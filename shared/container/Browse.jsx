@@ -5,7 +5,6 @@ import Loading from 'react-loading';
 import ReactPaginate from 'react-paginate';
 import BrowseCta from '../components/BrowseCta';
 import { fetchBrowse } from '../redux/actions/browse';
-import { fetchBrowseSettings } from '../redux/actions/browseSettings';
 
 class Browse extends Component {
   constructor(props) {
@@ -17,7 +16,6 @@ class Browse extends Component {
   componentWillMount() {
     if (!this.props.browse) {
       this.props.fetchBrowse();
-      this.props.fetchBrowseSettings();
     }
   }
 
@@ -28,7 +26,6 @@ class Browse extends Component {
   handlePageClick(data) {
     const page = data.selected + 1;
     const url = !page ||  page === 1 ? '/' : `/browse/${page}`;
-    this.props.fetchBrowseSettings();
     this.props.fetchBrowse({ page });
     this.context.router.push(url);
     window.scrollTo(0, 0);
@@ -36,7 +33,7 @@ class Browse extends Component {
 
   render() {
     const items = this.props.browse
-      ? this.props.browse.map((item, i) => (<BrowseCta item={ item } key={ i } cta={ this.buyItem } user={ this.props.user } />))
+      ? this.props.browse.items.map((item, i) => (<BrowseCta item={ item } key={ i } cta={ this.buyItem } user={ this.props.user } />))
       : <Loading type='spin' color='#e3e3e3' />;
 
     return (
@@ -47,9 +44,9 @@ class Browse extends Component {
             { items }
           </div>
 
-          { this.props.browseSettings
+          { this.props.browse
             ? <ReactPaginate
-                pageNum={ this.props.browseSettings.pages }
+                pageNum={ this.props.browse.pages }
                 initialSelected={ this.props.params.page - 1 }
                 clickCallback={ this.handlePageClick }
                 activeClassName={ 'active' }
@@ -67,14 +64,13 @@ class Browse extends Component {
   }
 }
 
-Browse.need = [fetchBrowseSettings, fetchBrowse];
+Browse.need = [fetchBrowse];
 
 function mapStateToProps(state) {
-  const { browse, browseSettings } = state;
+  const { browse } = state;
 
   return {
     browse,
-    browseSettings,
   };
 }
 
@@ -84,13 +80,10 @@ Browse.contextTypes = {
 
 Browse.propTypes = {
   user: PropTypes.object,
-  browse: PropTypes.array,
-  browseSettings: PropTypes.object,
+  browse: PropTypes.object,
   fetchBrowse: PropTypes.func.isRequired,
-  fetchBrowseSettings: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, {
   fetchBrowse,
-  fetchBrowseSettings,
 })(Browse);
