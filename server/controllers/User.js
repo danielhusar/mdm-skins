@@ -6,7 +6,7 @@ export function user(req, res) {
 }
 
 export function inventory(req, res) {
-  steamUserInventory(req.user.personaname)
+  steamUserInventory(req.user.id)
   .then(
     data => res.json(data),
     () => res.sendStatus(422)
