@@ -12,7 +12,7 @@ connect(() => {
   // Start app
   app.listen(config.port, (error) => {
     if (!error && isDevelopment()) {
-      console.log(chalk.blue(`App is running on: http://localhost:${config.port}`)); // eslint-disable-line
+      console.log(chalk.blue(`App is running on: ${config.baseURL}`)); // eslint-disable-line
     }
   });
 });
