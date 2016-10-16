@@ -30,8 +30,6 @@ class Selling extends Component {
         <Helmet title="Selling" />
         <UserNav />
         <div className="content">
-          Total items: { this.props.selling.length }
-
           <div className="items">
             { items }
           </div>
