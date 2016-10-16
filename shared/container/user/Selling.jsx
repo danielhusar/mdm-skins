@@ -21,6 +21,10 @@ class Selling extends Component {
   }
 
   render() {
+    const items = this.props.selling
+      ? this.props.selling.map((item, i) => (<SellingCta item={ item } key={ i } cta={ this.deleteItem } />))
+      : <Loading type='spin' color='#e3e3e3' />;
+
     return (
       <div className="index">
         <Helmet title="Selling" />
@@ -29,9 +33,7 @@ class Selling extends Component {
           Total items: { this.props.selling.length }
 
           <div className="items">
-            { this.props.selling ?
-              this.props.selling.map((item, i) => (<SellingCta item={ item } key={ i } cta={ this.deleteItem } />))
-              : <Loading type='spin' color='#e3e3e3' /> }
+            { items }
           </div>
         </div>
       </div>

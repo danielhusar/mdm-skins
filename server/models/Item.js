@@ -28,5 +28,7 @@ const itemSchema = new Schema({
 }, { timestamps: true });
 
 itemSchema.index({ seller: 1 });
+itemSchema.index({ buyer: 1 });
+itemSchema.index({ name: 'name', 'name': 'text' });
 
 export default mongoose.model('Item', itemSchema);

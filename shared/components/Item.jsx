@@ -30,7 +30,7 @@ class Item extends Component {
         { this.props.item.price ? (
           <div>
             <div className="sp__1"></div>
-            <div className="btn btn__full btn__alt">{ this.props.item.price }$</div>
+            <div className="btn btn__full btn__alt">{ this.props.item.price } $</div>
           </div>
         ) : null }
 

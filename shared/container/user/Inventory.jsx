@@ -40,19 +40,18 @@ class Inventory extends Component {
   }
 
   render() {
+    const items = this.props.inventory
+      ? this.props.inventory.map((item, i) => (this.showItem(item) ? <InventoryCta item={ item } key={ i } cta={ this.sellItem } /> : null))
+      : <Loading type="spin" color="#e3e3e3" />;
+
+
     return (
       <div className="index">
         <Helmet title="Inventory" />
         <UserNav />
         <div className="content">
           <div className="items">
-            { this.props.inventory ?
-              this.props.inventory.map((item, i) => (
-                this.showItem(item) ?
-                  <InventoryCta item={ item } key={ i } cta={ this.sellItem } />
-                : null
-              ))
-            : <Loading type="spin" color="#e3e3e3" /> }
+            { items }
           </div>
         </div>
       </div>

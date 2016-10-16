@@ -14,11 +14,11 @@ function Summary(props) {
         <table className="user__summary-table">
           <tbody>
             <tr>
-              <td className="user__summary-label">Username:</td>
+              <td className="user__summary-label">Name:</td>
               <td className="user__summary-val">{props.user.realname}</td>
             </tr>
             <tr>
-              <td className="user__summary-label">Name:</td>
+              <td className="user__summary-label">Username:</td>
               <td className="user__summary-val">{props.user.personaname}</td>
             </tr>
             <tr>

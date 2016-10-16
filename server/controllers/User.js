@@ -7,7 +7,10 @@ export function user(req, res) {
 
 export function inventory(req, res) {
   steamUserInventory(req.user.personaname)
-    .then(data => res.json(data));
+  .then(
+    data => res.json(data),
+    () => res.sendStatus(422)
+  );
 }
 
 export function selling(req, res) {
@@ -15,8 +18,11 @@ export function selling(req, res) {
     seller: req.user._id,
     seller_status: 'selling'
   })
-  .sort({updatedAt: -1})
+  .sort({ updatedAt: -1 })
   .populate('seller')
   .exec()
-  .then(data => res.json(data));
+  .then(
+    data => res.json(data),
+    () => res.sendStatus(422)
+  );
 }

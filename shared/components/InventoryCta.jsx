@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import isNumeric from 'validator/lib/isNumeric';
+import isFloat from 'validator/lib/isFloat';
 import Item from './Item';
 
 class InventoryCta extends Component {
@@ -13,7 +13,7 @@ class InventoryCta extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    if (!isNumeric(this.refs.price.value)) {
+    if (!isFloat(this.refs.price.value) || this.refs.price.value <= 0) {
       this.setState({ error: true });
     } else {
       this.setState({ error: false });
@@ -31,7 +31,7 @@ class InventoryCta extends Component {
       <Item item={ this.props.item }>
         <form className="g__row g__row-fit" onSubmit={ this.handleSubmit }>
           <div className="g__c5">
-            <input type="number" className={ classNames(inputClasses) } ref="price" />
+            <input type="number" className={ classNames(inputClasses) } ref="price" step="any" min="0" />
           </div>
           <div className="g__c7">
             <button type="submit" className="btn btn__primary btn__full">Sell</button>

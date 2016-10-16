@@ -7,7 +7,7 @@ export function sell(req, res) {
   })
   .save()
   .then(
-    () => res.json({ success: true }),
+    () => res.json(),
     () => res.sendStatus(422)
   );
 }
@@ -20,7 +20,7 @@ export function remove(req, res) {
     seller_status: 'deleted',
   })
   .then(
-    () => res.json({ success: true }),
+    () => res.json(),
     () => res.sendStatus(422)
   );
 }
