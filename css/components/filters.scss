@@ -1,0 +1,29 @@
+.filters {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+}
+
+.filters__group + .filters__group {
+  padding-left: 15px;
+}
+
+.filters__label {
+  padding-right: 10px;
+}
+
+.filters__input ,
+.filters__select {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  padding: 2px 5px;
+  height: 25px;
+  outline: none;
+}
+
+.filters__btn {
+  height: 25px;
+  font-size: 14px;
+  padding: 2px 15px;
+}

@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import Loading from 'react-loading';
 import ReactPaginate from 'react-paginate';
+import Filters from '../components/Filters';
 import BrowseCta from '../components/BrowseCta';
 import { fetchBrowse } from '../redux/actions/browse';
 
@@ -40,6 +41,10 @@ class Browse extends Component {
       <div className="index">
         <Helmet title="Index" />
         <div className="content">
+          <div className="sp__1"></div>
+          <Filters />
+          <div className="sp__1"></div>
+
           <div className="items">
             { items }
           </div>
