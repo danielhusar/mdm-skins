@@ -10,6 +10,16 @@
   margin: 0;
 }
 
+.g__flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.g__c {
+  flex: 1;
+  min-width: 25%;
+}
+
 @for $i from 1 to 12 {
   .g__c$(i) {
     flex-basis: calc((100% / 12) * $i);
