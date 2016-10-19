@@ -15,10 +15,14 @@ class BrowseCta extends Component {
   render() {
     return (
       <Item item={ this.props.item }>
-        { this.props.user
-          ? <button type="submit" className="btn btn__primary btn__full" onClick={ this.handleCta }>Buy</button>
-          : null
-        }
+        <div className="g__flex">
+          <a href={ `${this.props.item.seller.profileurl}inventory/#730_2_${this.props.item.id}` }
+            className="btn btn__secondary btn__full g__c" rel="nofollow" target="_blank">View</a>
+          { this.props.user
+            ? <button type="submit" className="btn btn__primary g__c" onClick={ this.handleCta }>Buy</button>
+            : null
+          }
+        </div>
       </Item>
     );
   }

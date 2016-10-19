@@ -24,18 +24,15 @@ class InventoryCta extends Component {
   render() {
     const inputClasses = {
       item__input: true,
+      g__c: true,
       error: !!this.state.error,
     };
 
     return (
       <Item item={ this.props.item }>
-        <form className="g__row g__row-fit" onSubmit={ this.handleSubmit }>
-          <div className="g__c5">
-            <input type="number" className={ classNames(inputClasses) } ref="price" step="any" min="0" />
-          </div>
-          <div className="g__c7">
-            <button type="submit" className="btn btn__primary btn__full">Sell</button>
-          </div>
+        <form className="g__flex" onSubmit={ this.handleSubmit }>
+          <input type="number" className={ classNames(inputClasses) } ref="price" step="any" min="0" />
+          <button type="submit" className="btn btn__primary g__c">Sell</button>
         </form>
       </Item>
     );

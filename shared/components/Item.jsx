@@ -16,11 +16,11 @@ class Item extends Component {
           { this.props.item.quality ? <div className="item__category">{ this.props.item.quality }</div> : null }
         </div>
         <div className="sp__2"></div>
-        <Link to={`/user/${this.props.item.seller.personaname}`} className="item__user-avatar-link">
-          <img src={ this.props.item.seller.avatar } className="item__user-avatar" />
-        </Link>
-
-        <a href={ `${this.props.item.seller.profileurl}inventory/#730_2_${this.props.item.id}` } className="btn btn__secondary btn__full" rel="nofollow" target="_blank">View item</a>
+        { this.props.item.seller ? (
+          <Link to={`/user/${this.props.item.seller.personaname}`} className="item__user-avatar-link">
+            <img src={ this.props.item.seller.avatar } className="item__user-avatar" />
+          </Link>
+        ) : null }
 
         { this.props.item.price ? (
           <div>
