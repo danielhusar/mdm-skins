@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { config, isDevelopment } from '../../helpers/config';
 
 mongoose.Promise = global.Promise;
-mongoose.set('debug', isDevelopment());
+// mongoose.set('debug', isDevelopment());
 
 export function connect(cb) {
   if (mongoose.connection.readyState !== 0) {

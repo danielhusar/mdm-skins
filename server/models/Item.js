@@ -16,8 +16,9 @@ const itemSchema = new Schema({
   category: { type: 'String' },
   type: { type: 'String' },
   exterior: { type: 'String' },
-  quality: { type: 'String' },
+  weapon: { type: 'String' },
   price: { type: 'Number', required: true },
+  raw: { type: 'Object', required: true },
 
   seller: { type: 'ObjectId', ref: 'User', required: true },
   buyer: { type: 'ObjectId', ref: 'User' },
