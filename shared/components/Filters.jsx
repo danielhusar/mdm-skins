@@ -2,7 +2,7 @@ import React from 'react';
 
 function Filters(props) {
   return (
-    <form className="filters">
+    <form className="filters" onSubmit={ props.handleSubmit }>
       <div className="filters__group">
         <span className="filters__label">Name:</span>
         <input type="text" name="name" className="filters__input" />

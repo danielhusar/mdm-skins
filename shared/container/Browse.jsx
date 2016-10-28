@@ -12,6 +12,7 @@ class Browse extends Component {
     super(props);
     this.buyItem = this.buyItem.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
+    this.filtersSubmit = this.filtersSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -22,6 +23,11 @@ class Browse extends Component {
 
   buyItem() {
 
+  }
+
+  filtersSubmit(e) {
+    e.preventDefault();
+    console.log(e);
   }
 
   handlePageClick(data) {
@@ -60,7 +66,7 @@ class Browse extends Component {
         <Helmet title="Index" />
         <div className="content">
           <div className="sp__1"></div>
-          <Filters />
+          <Filters handleSubmit={ this.filtersSubmit }/>
           <div className="sp__1"></div>
           <div className="items">
             { this.items() }
