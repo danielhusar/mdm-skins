@@ -32,11 +32,29 @@ class Browse extends Component {
     window.scrollTo(0, 0);
   }
 
-  render() {
-    const items = this.props.browse
+  items() {
+    return this.props.browse
       ? this.props.browse.items.map((item, i) => (<BrowseCta item={ item } key={ i } cta={ this.buyItem } user={ this.props.user } />))
       : <Loading type='spin' color='#e3e3e3' />;
+  }
 
+  pagination() {
+    return this.props.browse
+      ? <ReactPaginate
+          pageNum={ this.props.browse.pages }
+          initialSelected={ this.props.params.page - 1 }
+          clickCallback={ this.handlePageClick }
+          activeClassName={ 'active' }
+          containerClassName={ 'pagination' }
+          nextClassName={ 'pagination__item' }
+          previousClassName={ 'pagination__item' }
+          disabledClassName={ 'disabled' }
+          pageClassName={ 'pagination__item' }
+        />
+      : null;
+  }
+
+  render() {
     return (
       <div className="index">
         <Helmet title="Index" />
@@ -44,25 +62,10 @@ class Browse extends Component {
           <div className="sp__1"></div>
           <Filters />
           <div className="sp__1"></div>
-
           <div className="items">
-            { items }
+            { this.items() }
           </div>
-
-          { this.props.browse
-            ? <ReactPaginate
-                pageNum={ this.props.browse.pages }
-                initialSelected={ this.props.params.page - 1 }
-                clickCallback={ this.handlePageClick }
-                activeClassName={ 'active' }
-                containerClassName={ 'pagination' }
-                nextClassName={ 'pagination__item' }
-                previousClassName={ 'pagination__item' }
-                disabledClassName={ 'disabled' }
-                pageClassName={ 'pagination__item' }
-              />
-            : null
-          }
+          { this.pagination() }
         </div>
       </div>
     );

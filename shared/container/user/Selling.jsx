@@ -20,18 +20,20 @@ class Selling extends Component {
     this.props.deleteItem(item);
   }
 
-  render() {
-    const items = this.props.selling
+  items() {
+    return this.props.selling
       ? this.props.selling.map((item, i) => (<SellingCta item={ item } key={ i } cta={ this.deleteItem } />))
       : <Loading type='spin' color='#e3e3e3' />;
+  }
 
+  render() {
     return (
       <div className="index">
         <Helmet title="Selling" />
         <UserNav />
         <div className="content">
           <div className="items">
-            { items }
+            { this.items() }
           </div>
         </div>
       </div>

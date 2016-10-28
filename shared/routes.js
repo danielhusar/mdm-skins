@@ -14,9 +14,15 @@ import Help from './container/Help';
 const routes = (
   <Route path="/" component={ App } >
     <IndexRoute component={ Browse } />
-    <Route path="/browse/:page" component={ Browse } />
     <Route path="/help" component={ Help } />
     <Route path="/about" component={ About } />
+
+    <Route path="/browse/:page" component={ Browse } />
+    <Route path="/browse/exterior/:exterior/type/:type" component={ Browse } />
+    <Route path="/browse/exterior/:exterior/type/:type/page/:page" component={ Browse } />
+    <Route path="/browse/exterior/:exterior/type/:type/search/:search" component={ Browse } />
+    <Route path="/browse/exterior/:exterior/type/:type/search/:search/page/:page" component={ Browse } />
+
     <Route path="/profile/summary" component={ Summary } />
     <Route path="/profile/inventory" component={ Inventory } />
     <Route path="/profile/selling" component={ Selling } />
