@@ -17,6 +17,7 @@ const itemSchema = new Schema({
   type: { type: 'String' },
   exterior: { type: 'String' },
   weapon: { type: 'String' },
+  wear: { type: 'Number' },
   price: { type: 'Number', required: true },
   raw: { type: 'Object', required: true },
 
